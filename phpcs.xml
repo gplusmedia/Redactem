@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<ruleset name="GPlusMedia">
+    <description>PHP Coding Standards for GPlusMedia</description>
+
+    <!-- Use PSR12 -->
+    <rule ref="PSR12"/>
+
+    <!-- Prefer strict comparisons (e.g. !== instead of !=) -->
+    <rule ref="SlevomatCodingStandard.Operators.DisallowEqualOperators"/>
+    <!-- Prevent assignment in if statements (e.g. if($var = $this->getVar()) { ...) -->
+    <rule ref="SlevomatCodingStandard.ControlStructures.AssignmentInCondition"/>
+    <!--  Enforce nullable types instead of implied nullable: (?array $foo = null) instead of (array $foo = null)  -->
+    <rule ref="SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue"/>
+
+    <rule ref="SlevomatCodingStandard.TypeHints.NullTypeHintOnLastPosition"/>
+
+    <!-- Sort imports -->
+    <rule ref="SlevomatCodingStandard.Namespaces.AlphabeticallySortedUses"/>
+
+    <!-- Prevent unnecessary aliases -->
+    <rule ref="SlevomatCodingStandard.Namespaces.UselessAlias"/>
+
+    <!-- e.g., ensures $foo['bar'] = 'baz' doesn't happen if $foo is not defined -->
+    <rule ref="SlevomatCodingStandard.Arrays.DisallowImplicitArrayCreation"/>
+
+    <!-- Remove extra parentheses -->
+    <rule ref="SlevomatCodingStandard.PHP.UselessParentheses">
+        <properties>
+            <!-- Allow extra parentheses if the logic is complicated -->
+            <property name="ignoreComplexTernaryConditions" value="true"/>
+        </properties>
+    </rule>
+
+    <!-- Single line arrays should have no trailing comma -->
+    <rule ref="Squiz.Arrays.ArrayDeclaration.CommaAfterLast"/>
+
+    <!-- Prefer single quotes -->
+    <rule ref="Squiz.Strings.DoubleQuoteUsage"/>
+
+    <!-- Ensures only one attribute inside a pair of brackets -->
+    <rule ref="SlevomatCodingStandard.Attributes.DisallowAttributesJoining"/>
+
+    <rule ref="SlevomatCodingStandard.Attributes.DisallowMultipleAttributesPerLine"/>
+    <rule ref="SlevomatCodingStandard.Attributes.RequireAttributeAfterDocComment"/>
+
+    <!--  e.g. use $foo::class instead of get_class($foo)  -->
+    <rule ref="SlevomatCodingStandard.Classes.ModernClassNameReference"/>
+    <rule ref="SlevomatCodingStandard.TypeHints.UselessConstantTypeHint"/>
+
+    <rule ref="SlevomatCodingStandard.TypeHints.DNFTypeHintFormat">
+        <properties>
+            <property name="shortNullable" value="yes"/>
+            <property name="nullPosition" value="last"/>
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Classes.ConstantSpacing">
+        <properties>
+            <property name="minLinesCountBeforeWithComment" value="0"/>
+            <property name="maxLinesCountBeforeWithComment" value="0"/>
+            <property name="minLinesCountBeforeWithoutComment" value="0"/>
+            <property name="maxLinesCountBeforeWithoutComment" value="0"/>
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Commenting.ForbiddenAnnotations">
+        <properties>
+            <property name="forbiddenAnnotations" type="array">
+                <element value="@copyright"/>
+                <element value="@package"/>
+                <element value="@throws"/>
+            </property>
+        </properties>
+    </rule>
+    <!-- Ensure proper spacing in PHPDocs -->
+    <rule ref="SlevomatCodingStandard.Commenting.DocCommentSpacing">
+        <properties>
+            <!-- Ensures no leading or trailing empty lines -->
+            <property name="linesCountBetweenDescriptionAndAnnotations" type="int" value="0"/>
+            <property name="linesCountBetweenDifferentAnnotationsTypes" type="int" value="0"/>
+            <property name="linesCountAfterLastContent" type="int" value="0"/>
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Commenting.UselessFunctionDocComment"/>
+</ruleset>
